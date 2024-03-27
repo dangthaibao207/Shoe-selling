@@ -1,0 +1,53 @@
+﻿@model IEnumerable<ShoesStore.Models.Shoes>
+
+@{
+    ViewBag.Title = "Index";
+}
+<style>
+    img {
+        width: 100px;
+    }
+</style>
+<div class="card mb-4">
+    <div class="card-header">
+        <i class="fas fa-table me-1"></i>
+        DataTable Example
+    </div>
+    <div class="card-body">
+        <table id="datatablesSimple">
+            <thead>
+                <tr>
+                    <th>Tieu De</th>
+                    <th>Gia</th>
+                    <th>Hang</th>
+                    <th>Hinh Anh</th>
+                    <th>Ten Danh Muc</th>
+                    <th>Hanh Dong</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.Title</td>
+                        <td>@item.Price</td>
+                        <td>@item.Hang</td>
+                        <td>
+                            <img src="@item.Image" />
+                        </td>
+                        <td>
+                            @item.Category.Title
+                        </td>
+                        <td>
+                            @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                            @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+                            @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
